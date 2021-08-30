@@ -21,10 +21,11 @@ def enviar():
     content = ""
     with open("./markdown/contenido.md", "r", encoding="utf-8") as f:
         content = f.read()
-    cuerpo = render_template('cuerpo.html', contenido=content)
     rectores = datos_csv.get_rectores()
     data = []
     for index, rector in rectores.iterrows():
+        #render del texto de correo
+        cuerpo = render_template('cuerpo.html', contenido=content)
         #Señor(a)
         cuerpo = cuerpo.replace('{strSenioria}', rector['strSenioria'])
         #Nombre
