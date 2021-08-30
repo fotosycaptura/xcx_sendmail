@@ -1,0 +1,70 @@
+{% extends './layout.html' %} {% block title%} Vista Previa {% endblock %} {%
+block body %}
+<div class="content">
+  <div class="row">
+    <div class="col">
+      Lo siguiente es una vista previa del mensaje de correo, configurado en el
+      archivo contenido.md
+    </div>
+  </div>
+</div>
+<div class="content card">
+  <div class="card-content">{{ contenido | markdown}}</div>
+</div>
+<div class="row">
+  <div class="col">
+    <form
+      action="/enviar"
+      method="POST"
+      onSubmit="document.getElementById('submit').disabled=true;"
+    >
+      <input
+        id="submit"
+        type="submit"
+        class="button is-primary"
+        value="Enviar"
+      />
+    </form>
+  </div>
+</div>
+<div>
+  <div class="row">
+    <div class="col">&nbsp;</div>
+  </div>
+  <div class="box">
+    Listado de correos desde el csv
+    <div class="content">
+      <div class="row">
+        <div class="col">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Institucion</th>
+                <th>Señoria</th>
+                <th>Nombre</th>
+                <th>Cargo</th>
+                <th>Email</th>
+                <th>Email 2</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for index, item in listado.iterrows() %}
+              <tr>
+                <td>{{item['id']}}</td>
+                <td>{{item['strInstitucion']}}</td>
+                <td>{{item['strSenioria']}}</td>
+                <td>{{item['strNombre']}}</td>
+                <td>{{item['strCargo']}}</td>
+                <td>{{item['strEmail']}}</td>
+                <td>{{item['strEmail02']}}</td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
