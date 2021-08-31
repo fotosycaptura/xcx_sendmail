@@ -1,5 +1,17 @@
 {% extends './layout.html' %} {% block title%} Procesado {% endblock %} {%
 block body %}
+
+<article class="message is-primary">
+  <div class="message-body">
+  <div class="row">
+    <div class="col">El sistema está funcionando en modo testing: <h1 class="title">{{ funcionando_en_testing }}</h1></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Modo de adjuntos: {{ adjuntos }}
+    </div>
+  </div>
+</article>
 <div class="content">
   <div class="row">
     <div class="col">
@@ -7,4 +19,30 @@ block body %}
     </div>
   </div>
 </div>
+<div class="content">
+      <div class="row">
+        <div class="col">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Institucion</th>
+                <th>Email</th>
+                <th>Resultado del envío</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for index, item in proceso.iterrows() %}
+              <tr>
+                <td>{{item['id']}}</td>
+                <td>{{item['strInstitucion']}}</td>
+                <td>{{item['strEmail']}}</td>
+                <td>{{item['Envio']}}</td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 {% endblock %}
