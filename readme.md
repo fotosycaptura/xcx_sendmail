@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ```
 ## Configuración del servicio de correos
 
-La configuración del servicio de correos se realiza en classes/cartero.py
+La configuración del servicio de correos se realiza en  la cabecera del archivo classes/cartero.py
 
 ## Datos
 
@@ -25,6 +25,11 @@ Los datos se deben de incluir dentro de la carpeta datos/datos.csv, en el format
 
 Para el envío de archivos adjuntos, se debe de crear dentro de la aplicación la carpeta de nombre *adjuntos*, y dentro de ella, agregar los archivos que se necesiten
 adjuntar con el envío de cada correo.
+
+Para el envío de adjuntos diferenciados por id, se debe de crear dentro de la aplicación, la carpeta de nombre *adjuntos-by-id*, y nombrarlos de acuerdo al id del csv.<br/>
+**Nota:** 
+* Si una institución existe y el archivo no, el correo **NO** se enviará. Lo mismo ocurre si la carpeta no existe.
+* Si desea usar esta función, debe especificar su uso en la sección de enviar correos diferenciados por id, definido en *index.py*
 
 # Plantilla de texto para el correo
 
